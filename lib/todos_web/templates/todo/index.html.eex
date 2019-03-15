@@ -27,7 +27,8 @@
 
 <footer class="footer" style="<%= footer_style(@todos) %>">
   <span class="todo-count">
-  <%= Enum.count(@todos, &(&1.completed == false)) %> items left
+  <strong><%= Enum.count(@todos, &(&1.completed == false)) %></strong>
+  <%= Inflex.inflect("item", Enum.count(@todos, &(&1.completed == false))) %> left
   </span>
   <ul class="filters">
     <li>
