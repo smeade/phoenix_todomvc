@@ -15,7 +15,7 @@
   <% end %>
 </ul>
 
-<footer class="footer">
+<footer class="footer" style="<%= footer_style(@todos) %>">
   <span class="todo-count">
   <%= Enum.count(@todos, &(&1.completed == false)) %> items left
   </span>

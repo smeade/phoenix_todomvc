@@ -8,4 +8,8 @@ defmodule TodosWeb.TodoView do
   def completed_class(todo) do
     if (todo.completed), do: "completed"
   end
+
+  def footer_style(todos) do
+    if (Enum.count(todos) == 0), do: "display: none;"
+  end
 end
