@@ -6,7 +6,8 @@ defmodule TodosWeb.TodoController do
 
   def index(conn, _params) do
     todos = TodoList.list_todos()
-    render(conn, "index.html", todos: todos)
+    changeset = TodoList.change_todo(%Todo{})
+    render(conn, "index.html", todos: todos, changeset: changeset)
   end
 
   def new(conn, _params) do
@@ -19,7 +20,7 @@ defmodule TodosWeb.TodoController do
       {:ok, todo} ->
         conn
         |> put_flash(:info, "Todo created successfully.")
-        |> redirect(to: Routes.todo_path(conn, :show, todo))
+        |> redirect(to: Routes.todo_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)

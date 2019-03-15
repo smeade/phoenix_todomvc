@@ -5,15 +5,5 @@
     </div>
   <% end %>
 
-  <%= label f, :title %>
-  <%= text_input f, :title %>
-  <%= error_tag f, :title %>
-
-  <%= label f, :completed %>
-  <%= checkbox f, :completed %>
-  <%= error_tag f, :completed %>
-
-  <div>
-    <%= submit "Save" %>
-  </div>
+  <%= text_input f, :title, class: 'new-todo', placeholder: "What needs to be done?", autofocus: 'autofocus' %>
 <% end %>

@@ -15,8 +15,9 @@ defmodule TodosWeb.Router do
 
   scope "/", TodosWeb do
     pipe_through :browser
+    get "/", TodoController, :index
+
     resources "/todos", TodoController
-    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
