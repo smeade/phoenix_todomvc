@@ -25,22 +25,22 @@
   <% end %>
 </ul>
 
-<footer class="footer" style="<%= footer_style(@todos) %>">
+<footer class="footer" style="<%= footer_style(@active_todos_count) %>">
   <span class="todo-count">
-  <strong><%= Enum.count(@todos, &(&1.completed == false)) %></strong>
-  <%= Inflex.inflect("item", Enum.count(@todos, &(&1.completed == false))) %> left
+  <strong><%= @active_todos_count %></strong>
+  <%= Inflex.inflect("item", @active_todos_count) %> left
   </span>
   <ul class="filters">
     <li>
-      <a href="#/" class="selected">All</a>
+      <%= link "All", to: Routes.todo_path(@conn, :index) %>
     </li>
     <li>
-      <a href="#/active">Active</a>
+      <%= link "Active", to: Routes.active_todo_path(@conn, :active) %>
     </li>
     <li>
-      <a href="#/completed">Completed</a>
+      <%= link "Completed", to: Routes.completed_todo_path(@conn, :completed) %>
     </li>
   </ul>
   <%= button "Clear completed", to: Routes.todo_clear_completed_path(@conn, :clear_completed),
-    method: :delete, class: "clear-completed", style: clear_completed_style(@todos) %>
+    method: :delete, class: "clear-completed", style: clear_completed_style(@completed_todos_count) %>
 </footer>

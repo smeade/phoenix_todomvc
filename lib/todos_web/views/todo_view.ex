@@ -5,15 +5,15 @@ defmodule TodosWeb.TodoView do
     if (todo.completed), do: "checked"
   end
 
-  def clear_completed_style(todos) do
-    if (Enum.count(todos, &(&1.completed == true)) == 0), do: "display: none;"
+  def clear_completed_style(completed_todos_count) do
+    if (completed_todos_count == 0), do: "display: none;"
   end
 
   def completed_class(todo) do
     if (todo.completed), do: "completed"
   end
 
-  def footer_style(todos) do
-    if (Enum.count(todos) == 0), do: "display: none;"
+  def footer_style(active_todos_count) do
+    if (active_todos_count == 0), do: "display: none;"
   end
 end

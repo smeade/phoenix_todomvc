@@ -19,6 +19,8 @@ defmodule TodosWeb.Router do
 
     resources "/todos", TodoController
     delete "/todo/clear_completed", TodoController, :clear_completed, as: :todo_clear_completed
+    get "/todo/active", TodoController, :active, as: :active_todo
+    get "/todo/completed", TodoController, :completed, as: :completed_todo
   end
 
   # Other scopes may use custom stacks.

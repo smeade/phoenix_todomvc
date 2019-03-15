@@ -7,7 +7,28 @@ defmodule TodosWeb.TodoController do
   def index(conn, _params) do
     todos = TodoList.list_todos()
     changeset = TodoList.change_todo(%Todo{})
-    render(conn, "index.html", todos: todos, changeset: changeset)
+    completed_todos_count = Enum.count(TodoList.list_todos(), &(&1.completed))
+    active_todos_count = Enum.count(TodoList.list_todos(), &(&1.completed == false))
+    render(conn, "index.html", todos: todos, changeset: changeset,
+      active_todos_count: active_todos_count, completed_todos_count: completed_todos_count)
+  end
+
+  def active(conn, _params) do
+    todos = TodoList.list_active_todos()
+    changeset = TodoList.change_todo(%Todo{})
+    completed_todos_count = Enum.count(TodoList.list_todos(), &(&1.completed))
+    active_todos_count = Enum.count(TodoList.list_todos(), &(&1.completed == false))
+    render(conn, "index.html", todos: todos, changeset: changeset,
+      active_todos_count: active_todos_count, completed_todos_count: completed_todos_count)
+  end
+
+  def completed(conn, _params) do
+    todos = TodoList.list_completed_todos()
+    changeset = TodoList.change_todo(%Todo{})
+    completed_todos_count = Enum.count(TodoList.list_todos(), &(&1.completed))
+    active_todos_count = Enum.count(TodoList.list_todos(), &(&1.completed == false))
+    render(conn, "index.html", todos: todos, changeset: changeset,
+      active_todos_count: active_todos_count, completed_todos_count: completed_todos_count)
   end
 
   def new(conn, _params) do
@@ -65,6 +86,8 @@ defmodule TodosWeb.TodoController do
     TodoList.clear_completed_todos
     todos = TodoList.list_todos()
     changeset = TodoList.change_todo(%Todo{})
-    render(conn, "index.html", todos: todos, changeset: changeset)
+    conn
+    |> put_flash(:info, "Todos deleted successfully.")
+    |> redirect(to: Routes.todo_path(conn, :index))
   end
 end

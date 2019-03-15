@@ -20,6 +20,14 @@ defmodule Todos.TodoList do
     Todo |> order_by(asc: :id) |> Repo.all
   end
 
+  def list_active_todos do
+    from(t in Todo, where: t.completed == false) |> order_by(asc: :id) |> Repo.all
+  end
+
+  def list_completed_todos do
+    from(t in Todo, where: t.completed) |> order_by(asc: :id) |> Repo.all
+  end
+
   @doc """
   Gets a single todo.
 
