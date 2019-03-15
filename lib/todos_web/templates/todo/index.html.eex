@@ -25,7 +25,7 @@
   <% end %>
 </ul>
 
-<footer class="footer" style="<%= footer_style(@active_todos_count) %>">
+<footer class="footer" style="<%= footer_style(@active_todos_count + @completed_todos_count) %>">
   <span class="todo-count">
   <strong><%= @active_todos_count %></strong>
   <%= Inflex.inflect("item", @active_todos_count) %> left
