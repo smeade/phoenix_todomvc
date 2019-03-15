@@ -4,7 +4,11 @@
 
 # Todos
 
+<<<<<<< HEAD
 Ported from but not at all part of nor related to <a href="http://todomvc.com">TodoMVC</a>
+=======
+Ported from but not part of <a href="http://todomvc.com">TodoMVC</a>.
+>>>>>>> Update README
 
 To start your Phoenix server:
 

@@ -10,7 +10,7 @@
         <%= form_for @conn, Routes.todo_path(@conn, :update, todo), fn _f -> %>
           <input name="_method" type="hidden" value="put" />
           <input name="todo[completed]" type="hidden" value="false">
-          <input name="todo[completed]" class="toggle" type="checkbox" value="true" <%= checked(todo) %> onChange="this.form.submit()">
+          <input name="todo[completed]" class="toggle" type="checkbox" value="true" <%= checked(todo) %> onchange="this.form.submit()">
           <label><%= todo.title %></label>
         <% end %>
         <%= button "", to: Routes.todo_path(@conn, :delete, todo), method: :delete, class: "destroy" %>
