@@ -9,7 +9,7 @@
       <div class="view">
         <input class="toggle" type="checkbox" <%= checked(todo) %>>
         <label><%= todo.title %></label>
-        <button class="destroy"></button>
+        <%= button "", to: Routes.todo_path(@conn, :delete, todo), method: :delete, class: "destroy" %>
       </div>
     </li>
   <% end %>
