@@ -5,12 +5,30 @@
 
 <ul class="todo-list">
   <%= for todo <- @todos do %>
-    <li>
+    <li class="<%= completed_class(todo) %>">
       <div class="view">
-        <input class="toggle" type="checkbox">
+        <input class="toggle" type="checkbox" <%= checked(todo) %>>
         <label><%= todo.title %></label>
         <button class="destroy"></button>
       </div>
     </li>
   <% end %>
 </ul>
+
+<footer class="footer">
+  <span class="todo-count">
+  <%= Enum.count(@todos, &(&1.completed == false)) %> items left
+  </span>
+  <ul class="filters">
+    <li>
+      <a href="#/" class="selected">All</a>
+    </li>
+    <li>
+      <a href="#/active">Active</a>
+    </li>
+    <li>
+      <a href="#/completed">Completed</a>
+    </li>
+  </ul>
+  <button class="clear-completed" style="display: none;">Clear completed</button>
+</footer>
