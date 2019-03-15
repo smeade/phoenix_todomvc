@@ -5,15 +5,21 @@
 
 <ul class="todo-list">
   <%= for todo <- @todos do %>
-    <li class="<%= completed_class(todo) %>">
+    <li class="<%= completed_class(todo) %>" ondblclick="this.className += ' editing'">
       <div class="view">
         <%= form_for @conn, Routes.todo_path(@conn, :update, todo), fn f -> %>
           <input name="_method" type="hidden" value="put" />
           <input name="todo[completed]" type="hidden" value="false">
-          <input name="todo[completed]" id="completed" class="toggle" type="checkbox" value="true" <%= checked(todo) %> onChange="this.form.submit()">
+          <input name="todo[completed]" class="toggle" type="checkbox" value="true" <%= checked(todo) %> onChange="this.form.submit()">
           <label><%= todo.title %></label>
         <% end %>
         <%= button "", to: Routes.todo_path(@conn, :delete, todo), method: :delete, class: "destroy" %>
+      </div>
+      <div>
+        <%= form_for @conn, Routes.todo_path(@conn, :update, todo), fn f -> %>
+          <input name="_method" type="hidden" value="put" />
+          <input name="todo[title]" class="edit" value="<%= todo.title %>" onblur="this.form.submit()">
+        <% end %>
       </div>
     </li>
   <% end %>
