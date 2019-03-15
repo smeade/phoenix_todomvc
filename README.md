@@ -1,3 +1,7 @@
+<img src="https://raw.githubusercontent.com/smeade/phoenix_todomvc/master/priv/docs/todos1.png" width="250" /><img src="https://raw.githubusercontent.com/smeade/phoenix_todomvc/master/priv/docs/todos4.png" width="250" /><img src="https://raw.githubusercontent.com/smeade/phoenix_todomvc/master/priv/docs/todos5.png" width="250" />
+
+<img src="https://raw.githubusercontent.com/smeade/phoenix_todomvc/master/priv/docs/todos11.png" width="250" /><img src="https://raw.githubusercontent.com/smeade/phoenix_todomvc/master/priv/docs/todos9.png" width="250" /><img src="https://raw.githubusercontent.com/smeade/phoenix_todomvc/master/priv/docs/todos8.png" width="250" />
+
 # Todos
 
 To start your Phoenix server:
