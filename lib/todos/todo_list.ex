@@ -5,7 +5,6 @@ defmodule Todos.TodoList do
 
   import Ecto.Query, warn: false
   alias Todos.Repo
-
   alias Todos.TodoList.Todo
 
   @doc """
@@ -87,6 +86,22 @@ defmodule Todos.TodoList do
   """
   def delete_todo(%Todo{} = todo) do
     Repo.delete(todo)
+  end
+
+  @doc """
+  Deletes completed Todos
+
+  ## Examples
+
+      iex> delete_todo(todo)
+      {:ok, %Todo{}}
+
+      iex> delete_todo(todo)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def clear_completed_todos do
+    from(t in Todo, where: t.completed) |> Repo.delete_all
   end
 
   @doc """

@@ -60,4 +60,11 @@ defmodule TodosWeb.TodoController do
     |> put_flash(:info, "Todo deleted successfully.")
     |> redirect(to: Routes.todo_path(conn, :index))
   end
+
+  def clear_completed(conn, _params) do
+    TodoList.clear_completed_todos
+    todos = TodoList.list_todos()
+    changeset = TodoList.change_todo(%Todo{})
+    render(conn, "index.html", todos: todos, changeset: changeset)
+  end
 end

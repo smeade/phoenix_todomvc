@@ -7,7 +7,7 @@
   <%= for todo <- @todos do %>
     <li class="<%= completed_class(todo) %>" ondblclick="this.className += ' editing'">
       <div class="view">
-        <%= form_for @conn, Routes.todo_path(@conn, :update, todo), fn f -> %>
+        <%= form_for @conn, Routes.todo_path(@conn, :update, todo), fn _f -> %>
           <input name="_method" type="hidden" value="put" />
           <input name="todo[completed]" type="hidden" value="false">
           <input name="todo[completed]" class="toggle" type="checkbox" value="true" <%= checked(todo) %> onChange="this.form.submit()">
@@ -41,5 +41,6 @@
       <a href="#/completed">Completed</a>
     </li>
   </ul>
-  <button class="clear-completed" style="<%= clear_completed_style(@todos) %>">Clear completed</button>
+  <%= button "Clear completed", to: Routes.todo_clear_completed_path(@conn, :clear_completed),
+    method: :delete, class: "clear-completed", style: clear_completed_style(@todos) %>
 </footer>
