@@ -18,7 +18,7 @@ defmodule Todos.TodoList do
 
   """
   def list_todos do
-    Repo.all(Todo)
+    Todo |> order_by(asc: :id) |> Repo.all
   end
 
   @doc """

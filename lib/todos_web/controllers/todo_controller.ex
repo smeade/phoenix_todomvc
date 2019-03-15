@@ -45,7 +45,7 @@ defmodule TodosWeb.TodoController do
       {:ok, todo} ->
         conn
         |> put_flash(:info, "Todo updated successfully.")
-        |> redirect(to: Routes.todo_path(conn, :show, todo))
+        |> redirect(to: Routes.todo_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", todo: todo, changeset: changeset)
