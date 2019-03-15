@@ -41,5 +41,5 @@
       <a href="#/completed">Completed</a>
     </li>
   </ul>
-  <button class="clear-completed" style="display: none;">Clear completed</button>
+  <button class="clear-completed" style="<%= clear_completed_style(@todos) %>">Clear completed</button>
 </footer>
